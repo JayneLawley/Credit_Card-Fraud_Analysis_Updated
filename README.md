@@ -1,4 +1,4 @@
-**Project: Credit Card Fraud Analysis**
+# Project: Credit Card Fraud Analysis
 
 This project uses exploratory data analysis (EDA), statistical testing and predictive modelling to investigate fraud patterns, evaluate trade-offs between detecting fraudulent activity and reducing false alerts, and communicate insights for key business stakeholders.
 
@@ -20,7 +20,7 @@ This project uses exploratory data analysis (EDA), statistical testing and predi
 - fraud: Target variable (1 = fraudulent, 0 = genuine)
 ---
 
-**Business Rationale**
+## Business Rationale
 
 Credit card fraud is a growing global challenge. Recent reports highlight an increase in card fraud losses worldwide, with new tactics exploiting gaps in current defences (FICO, 2023). Fraud has serious costs for all parties: victims suffer financial losses and stress, while banks face direct losses, higher operating costs, and reputational damage.
 
@@ -45,11 +45,11 @@ Modern fraud prevention relies on machine learning and AI to detect evolving fra
 
 ---
 
-**Exploratory Data Analysis and Testing Methodology**
+## Exploratory Data Analysis and Testing Methodology
 
 Exploratory Data Analysis (EDA) was used to examine feature distributions, validate statistical tests, and identify fraud patterns across both continuous and categorical variables. The analysis combined visual exploration with formal testing to ensure that findings were both interpretable and statistically sound.
 
-## Main Data Analysis Libraries
+**Main Data Analysis Libraries**
 - Pandas (for data loading, cleaning, manipulation, and exploratory analysis)
 - NumPy (for numerical operations and array handling)
 - Matplotlib (for static visualisations such as histograms, boxplots, and bar charts).
@@ -93,45 +93,45 @@ Exploratory Data Analysis (EDA) was used to examine feature distributions, valid
 
 ---
 
-**Hypotheses and Statistical Methods**
+## Hypotheses and Statistical Methods
 
-H1: Fraud increases with greater distance from home
+**H1: Fraud increases with greater distance from home**
 - Test: Mann-Whitney U test comparing the distributions of distance_from_home for fraudulent and non-fraudulent transactions.
 - Rationale: Continuous variable with strong right skew, non-normal distribution, and extreme outliers.
 
-H2: Fraud increases with greater distance from the previous transaction
+**H2: Fraud increases with greater distance from the previous transaction**
 - Test: Mann-Whitney U on distance_from_last_transaction between fraud groups.
 - Rationale: Non-parametric test avoids distortion by outliers.
 
-H3: Fraud increases when the purchase amount is high relative to the customer's usual spend
+**H3: Fraud increases when the purchase amount is high relative to the customer's usual spend**
 - Test: Mann-Whitney U test on ratio_to_median_purchase_price (log-transformed).
 - Visualisation: Boxplots and histograms were used to assess skew and highlight outliers.
 - Rationale: Extreme values in this feature were expected to correlate strongly with fraud.
 
-H4: Online orders are more likely to be fraudulent
+**H4: Online orders are more likely to be fraudulent**
 - Test: Chi-square test for independence (fraud vs online_order).
 - Rationale: Both are categorical variables; this test identifies whether online ordering has a statistically significant association with fraud rate.
 
-H5: Chip or PIN use reduces the likelihood of fraud
+**H5: Chip or PIN use reduces the likelihood of fraud**
 - Test: Chi-square tests (fraud vs used_chip; fraud vs used_pin_number).
 - Rationale: Authentication methods were hypothesised to lower risk. Tests were repeated separately to observe independent and combined effects.
 
-H6: Fraud likelihood differs between repeat and new retailers
+**H6: Fraud likelihood differs between repeat and new retailers**
 - Test: Chi-square (fraud vs repeat_retailer).
 - Rationale: A measure of familiarity; new retailers were expected to have a slightly higher risk.
 
-H7: Threshold tuning demonstrates trade-offs between false positives and false negatives
+**H7: Threshold tuning demonstrates trade-offs between false positives and false negatives**
 - Test: Precision-Recall curve analysis and threshold adjustment in the modelling notebook.
 - Rationale: This is not a statistical hypothesis - a model evaluation analysis was used to illustrate business trade-offs.
 
-H8: Fraud risk depends on both channel and chip use
+**H8: Fraud risk depends on both channel and chip use**
 - Test: Chi-square on the combined categorical variable online_chip_category, created by combining online_order and used_chip.
 - Rationale: Tests for interaction between channel type and authentication method.
 
 ---
-# Project File and Folder Structure
+## Project File and Folder Structure
 
-## Folder/File Structure Content Information
+**Folder/File Structure Content Information**
 
 | File / Folder                               | Purpose / Description                                                                     |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -150,7 +150,7 @@ H8: Fraud risk depends on both channel and chip use
 | requirements.txt                            | Python dependencies and version references for reproducibility.                           |
 | README.md                                   | Project documentation and summary of results.                                             |
 
-## File Structure
+**File Structure**
 
 ```text
 Credit_Card-Fraud_Analysis_Updated
@@ -185,7 +185,7 @@ Credit_Card-Fraud_Analysis_Updated
 ```
 ---
 
-**Key Findings from EDA**
+## Key Findings from EDA
 
 The statistical results confirmed many of the initial hypotheses and provided quantitative support for later modelling decisions.
 
@@ -197,7 +197,7 @@ The statistical results confirmed many of the initial hypotheses and provided qu
 - H6: New retailers had a small but statistically significant increase in fraud likelihood (p < 0.05).
 - H8: The combination of online and no chip produced the highest observed fraud rate (p < 0.001).
 
-**Modelling**
+## Modelling
 
 The modelling notebook builds and evaluates fraud detection models using the processed dataset from ETL. It addresses the class imbalance problem (8.74% fraud) and compares different approaches to identify the most effective model for deployment.
 
@@ -223,7 +223,7 @@ The modelling notebook builds and evaluates fraud detection models using the pro
 - Isolates test set first to prevent data leakage
 - Prepares features (X) and target variable (y) for modelling
 
-**2. Handles Class Imbalance**
+**2. Handle Class Imbalance**
 
 - Tests two approaches (SMOTE and class weighting) and includes a control to observe impact.:
     - Class weighting (class_weight='balanced'): Adjusts model to penalise misclassifications of minority class more heavily
@@ -240,7 +240,7 @@ The modelling notebook builds and evaluates fraud detection models using the pro
 - Why these models: Both are interpretable, suitable for imbalanced data, and provide explainable results for business stakeholders
 
 **Evaluation Strategy**
-- Uses PR AUC (Precision-Recall Area Under Curve) as primary metric
+- Uses PR-AUC (Precision-Recall Area Under Curve) as primary metric
     - ROC-AUC can be misleading on imbalanced data; PR-AUC is usually more informative because it focuses on the positive class. Nevertheless, ROC AUC reports are included for completeness.
 
 **Threshold Analysis**
@@ -258,7 +258,7 @@ The modelling notebook builds and evaluates fraud detection models using the pro
 
 ---
 
-**Dashboard Design**
+## Dashboard Design
 
 The Power BI dashboard was developed to communicate key findings. It consists of two interactive pages: one providing an overview for managers, and another supporting exploration of threshold setting impacts on the balance between catching fraud and managing false alerts.
 
@@ -317,7 +317,7 @@ Purpose: To allow analysts to explore how adjusting the model's decision thresho
 The goal was to bridge the gap between technical analysis and business application.
 ---
 
-**Ethical Considerations and Responsible AI**
+## Ethical Considerations and Responsible AI
 
 Although this project uses a synthetic dataset with no identifiable personal information, in a real-world context, fraud detection involves sensitive personal and financial data. All personal data processing must comply with the General Data Protection Regulation (GDPR) and the Data Protection Act 2018.
 
@@ -329,7 +329,7 @@ A human-in-the-loop approach ensures that model predictions are not left uncheck
 
 ---
 
-**Project Challenges and Limitations**
+## Project Challenges and Limitations
 
 **Technical Challenges**
 
@@ -355,7 +355,7 @@ Several practical challenges arose during the development and implementation sta
 
 ---
 
-**Project Summary**
+## Project Summary
 
 This project explored how data analysis and machine learning can support fraud detection while balancing operational risk, false alerts, and investigation cost. The aim was not only to detect fraudulent transactions effectively but to understand how model thresholds and decision settings influence business outcomes.
 
@@ -365,7 +365,7 @@ Through the use of a structured workflow (covering ETL, EDA, modelling, and dash
 
 Insights drawn were that distance from home, purchase price ratio, and online transactions were the strongest indicators of fraud, while authentication features such as chip and PIN use significantly reduced risk. Modelling provided additional clear insights into feature importance and highlighted the simplicity of fraud separation within the synthetic dataset.
 
-**Credits**
+## Credits
 
 **Fraud Research and Business Context**
 
