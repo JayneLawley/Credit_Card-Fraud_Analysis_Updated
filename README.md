@@ -133,22 +133,27 @@ Exploratory Data Analysis (EDA) was used to examine feature distributions, valid
 
 **Folder/File Structure Content Information**
 
-| File / Folder                               | Purpose / Description                                                                     |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| data/raw/card_transdata_sample_100k.csv     | Raw stratified sample of transactions used to build the project (source sample).          |
-| data/raw/sample_log.json                    | Sampling / ETL log with sampling parameters.                                              |
-| data/processed/card_transdata_processed.csv | Cleaned and feature-engineered dataset ready for modelling and analysis.                  |
-| jupyter_notebooks/01_ETL.ipynb              | ETL: data loading, cleaning, and generation of the processed CSV.                         |
-| jupyter_notebooks/02_EDA.ipynb              | Exploratory data analysis and visualisations; hypothesis checks and summary plots.        |
-| jupyter_notebooks/03_Modelling.ipynb        | Modelling: training, validation, threshold analysis, and exporting reports/metrics.       |
-| reports/balance_model_comparison.csv        | High-level validation comparison of imbalance-handling strategies (PR AUC / ROC AUC).     |
-| reports/balance_threshold_comparison.csv    | Threshold comparison table (Recall / Precision / TP/FP/FN/TN at selected thresholds).     |
-| reports/logit_test_thresholds.csv           | Logistic Regression test-set threshold summary (selected thresholds).                     |
-| reports/logit_test_thresholds_detailed.csv  | Fine-grained logistic threshold sweep (0.30–0.90) with F1 scores for threshold selection. |
-| reports/tree_test_thresholds.csv            | Decision Tree threshold results on the test set.                                          |
-| reports/test_model_compare.csv              | Final model comparison on test set (PR_AUC_Test, ROC_AUC_Test, PR_AUC_Val, Δ).            |
-| requirements.txt                            | Python dependencies and version references for reproducibility.                           |
-| README.md                                   | Project documentation and summary of results.                                             |
+| File / Folder                                  | Purpose / Description                                                                     |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Dashboard/Credit-Card-Analysis-Dashboard.pbix  | Power BI dashboard visualising model insights, KPIs, and fraud detection trade-offs.      |
+| data/raw/card_transdata_sample_100k.csv        | Raw stratified sample of transactions used to build the project (source sample).          |
+| data/raw/sample_log.json                       | Sampling / ETL log with sampling parameters.                                              |
+| data/processed/card_transdata_processed.csv    | Cleaned and feature-engineered dataset ready for modelling and analysis.                  |
+| jupyter_notebooks/01_ETL.ipynb                 | ETL: data loading, cleaning, and generation of the processed CSV.                         |
+| jupyter_notebooks/02_EDA.ipynb                 | Exploratory data analysis and visualisations; hypothesis checks and summary plots.        |
+| jupyter_notebooks/03_Modelling.ipynb           | Modelling: training, validation, threshold analysis, and exporting reports/metrics.       |
+| reports/balance_model_comparison.csv           | High-level validation comparison of imbalance-handling strategies (PR AUC / ROC AUC).     |
+| reports/balance_threshold_comparison.csv       | Threshold comparison table (Recall / Precision / TP/FP/FN/TN at selected thresholds).     |
+| reports/logit_test_thresholds.csv              | Logistic Regression test-set threshold summary (selected thresholds).                     |
+| reports/logit_test_thresholds_detailed.csv     | Fine-grained logistic threshold sweep (0.30–0.90) with F1 scores for threshold selection. |
+| reports/tree_test_thresholds.csv               | Decision Tree threshold results on the test set.                                          |
+| reports/test_model_compare.csv                 | Final model comparison on test set (PR_AUC_Test, ROC_AUC_Test, PR_AUC_Val, Δ).            |
+| Wireframe/Balsamiq_Wireframe_Fraud_Overview_Report1.jpg | Initial wireframe design for dashboard layout (Decision Maker view).                      |
+| Wireframe/Balsamiq_Wireframe_Threshold_Setting_Report2.jpg | Wireframe design for threshold analysis dashboard (Analyst view).                         |
+| README.md                                      | Project documentation and summary of results.                                             |
+| requirements.txt                               | Python dependencies and version references for reproducibility.                           |
+
+
 
 **File Structure**
 
@@ -158,6 +163,8 @@ Credit_Card-Fraud_Analysis_Updated
 ├── .gitignore
 ├── .python-version
 ├── .venv/
+├── Dashboard/
+│   └── Credit-Card-Analysis-Dashboard.pbix
 ├── data/
 │   ├── processed/
 │   │   └── card_transdata_processed.csv
@@ -176,11 +183,9 @@ Credit_Card-Fraud_Analysis_Updated
 │   ├── logit_test_thresholds_detailed.csv
 │   ├── test_model_compare.csv
 │   └── tree_test_thresholds.csv
-├── Dashboard/
-│   └── Credit-Card-Analysis-Dashboard.pbix
 ├── Wireframe/
-│   ├── Balasmiq_Dashboard_Report_Page_2.jpg
-│   ├── Balasmiq_Dashboard_Report_Page_1.jpg
+│   ├── Balsamiq_Wireframe_Fraud_Overview_Report1.jpg
+│   ├── Balsamiq_Wireframe_Threshold_Setting_Report2.jpg
 └── requirements.txt
 ```
 ---
