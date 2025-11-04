@@ -215,35 +215,31 @@ The modelling notebook builds and evaluates fraud detection models using the pro
 | `imblearn.over_sampling.SMOTE`         | Synthetic Minority Oversampling Technique for handling class imbalance                                        |
 | `matplotlib.pyplot`                    | Plotting evaluation curves (Precision–Recall, ROC, threshold visualisations)                                  |
 
-**Key steps:**
+### Key steps:
 
 **1. Data Preparation**
-
 - Splits data into train/validation/test sets (60%/20%/20%)
 - Isolates test set first to prevent data leakage
 - Prepares features (X) and target variable (y) for modelling
 
 **2. Handle Class Imbalance**
-
 - Tests two approaches (SMOTE and class weighting) and includes a control to observe impact.:
     - Class weighting (class_weight='balanced'): Adjusts model to penalise misclassifications of minority class more heavily
     - SMOTE (Synthetic Minority Over-sampling Technique): Generates synthetic fraud examples to balance training data
     - A control (no imbalance handling) was included to determine the impact of using imbalance handling
-
-- Reasoning:
+- **Approach Reasoning:**
     - With only 8.74% fraud cases, models would otherwise learn to predict "non-fraud" for everything
 
 **3. Model Selection**
-
 - Logistic Regression (Balanced): Interpretable baseline, good for understanding feature importance
 - Decision Tree (Balanced): Captures non-linear patterns, provides feature importance rankings
 - Why these models: Both are interpretable, suitable for imbalanced data, and provide explainable results for business stakeholders
 
-**Evaluation Strategy**
-- Uses PR-AUC (Precision-Recall Area Under Curve) as primary metric
+**4. Evaluation Strategy**
+- Use PR-AUC (Precision-Recall Area Under Curve) as primary metric:
     - ROC-AUC can be misleading on imbalanced data; PR-AUC is usually more informative because it focuses on the positive class. Nevertheless, ROC AUC reports are included for completeness.
 
-**Threshold Analysis**
+**5. Threshold Analysis**
 - Given stakeholders must balance catching fraud with handling false alerts, multiple threshold settings were explored to show precision/recall trade-offs. Tests generated confusion matrices and reports at key thresholds to aid clarity, provide key insights and document findings.
 
 **Note:**
@@ -271,11 +267,9 @@ Each visual is selected to communicate insights derived from analysis of the dat
 The dataset lacked time series and cost data. This limited my ability to show key business insights such as the financial impact of false alerts or missed frauds over time.
 
 **Fraud Overview (Decision Maker View)**
-
-Purpose: To give a clear, high-level understanding of overall fraud activity, and the operational trade-off between detecting fraud and minimising false alerts.
+- Purpose: To give a clear, high-level understanding of overall fraud activity, and the operational trade-off between detecting fraud and minimising false alerts.
 
 **Key elements:**
-
 - KPI summary cards displaying:
     - Total number of transactions
     - Total number of incorrect fraud alerts
@@ -295,11 +289,9 @@ Purpose: To give a clear, high-level understanding of overall fraud activity, an
 This page provides an overview of fraud business impact (quantifying fraud transaction distribution, demonstrating fraud feature patterns, and highlighting the business challenge balance between catching fraud vs managing false alerts).
 
 **Threshold Analysis (Analyst View)**
-
-Purpose: To allow analysts to explore how adjusting the model's decision threshold impacts performance metrics such as precision, recall, false alerts, and missed frauds.
+- Purpose: To allow analysts to explore how adjusting the model's decision threshold impacts performance metrics such as precision, recall, false alerts, and missed frauds.
 
 **Key elements:**
-
 - Threshold slider that dynamically updates the main KPIs:
     - Precision
     - Number of false alerts
@@ -313,8 +305,8 @@ Purpose: To allow analysts to explore how adjusting the model's decision thresho
     - Fraud rate by distance from last transaction
     - Fraud rate by purchase price band
 - Filters to enable exploration of fraud features (including some combined features such as chip/PIN and offline/online).
+- The goal was to bridge the gap between technical threshold analysis and practical business application.
 
-The goal was to bridge the gap between technical analysis and business application.
 ---
 
 ## Ethical Considerations and Responsible AI
