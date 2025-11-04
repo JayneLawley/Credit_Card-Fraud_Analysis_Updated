@@ -1,0 +1,8 @@
+threshold,tp,fp,fn,tn,precision,recall,model
+0.3,1713,2404,35,15848,0.416,0.98,Logistic_Regression_Balanced
+0.5,1651,1457,97,16795,0.531,0.945,Logistic_Regression_Balanced
+0.6,1607,1112,141,17140,0.591,0.919,Logistic_Regression_Balanced
+0.7,1524,802,224,17450,0.655,0.872,Logistic_Regression_Balanced
+0.75,1477,653,271,17599,0.693,0.845,Logistic_Regression_Balanced
+0.8,1413,541,335,17711,0.723,0.808,Logistic_Regression_Balanced
+0.85,1323,425,425,17827,0.757,0.757,Logistic_Regression_Balanced
