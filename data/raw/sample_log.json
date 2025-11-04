@@ -1,0 +1,12 @@
+{
+  "raw_rows": 1000000,
+  "dedup_rows": 1000000,
+  "sample_rows": 100000,
+  "fraud_ratio_full": 0.087403,
+  "fraud_ratio_sample": 0.0874,
+  "seed": 42,
+  "sample_n": 100000,
+  "full_hash": "e16d7e593e5df1487301b78e821e481e",
+  "sample_hash": "bb0657ae0cf17080e6add8066fd2666e",
+  "sample_path": "data\\raw\\card_transdata_sample_100k.csv"
+}
